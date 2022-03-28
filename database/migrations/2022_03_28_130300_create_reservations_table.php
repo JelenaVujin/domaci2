@@ -15,6 +15,8 @@ class CreateReservationsTable extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('book_id');
+            $table->foreignId('user_id');
             $table->timestamps();
         });
     }
