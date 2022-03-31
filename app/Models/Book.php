@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Book extends Model
 {
     use HasFactory;
-    protected $fillable=['id,title','author','isbn','is_available'];
+    protected $fillable=['id','title','author','isbn','is_available'];
     public function reservation()
     {
         return $this->hasMany(Reservation::class);
