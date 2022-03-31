@@ -16,7 +16,7 @@ class BookFactory extends Factory
         return [
             'title'=>$this->faker->sentence(),
             'author'=>$this->faker->name(),
-            'isbn'=>$this->faker->unique()->word(),
+            'isbn'=>$this->faker->unique()->randomNumber(),
             'is_available'=>$this->faker->boolean()
         ];
     }

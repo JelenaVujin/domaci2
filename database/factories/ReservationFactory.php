@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Book;
+use App\Models\Member;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -17,7 +18,8 @@ class ReservationFactory extends Factory
     {
         return [
             'book_id'=>Book::factory(),
-            'user_id'=>User::factory()
+            'user_id'=>User::factory(),
+            'member_id'=>Member::factory()
         ];
     }
 }
