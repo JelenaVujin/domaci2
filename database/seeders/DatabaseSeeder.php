@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
         User::truncate();
         Member::truncate();
         Reservation::truncate();
-        User::factory(10)->create();
+        User::factory(3)->create();
         $this->call([
             BookSeeder::class,
             MemberSeeder::class,

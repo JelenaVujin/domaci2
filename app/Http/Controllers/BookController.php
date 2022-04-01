@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\BookCollection;
 use App\Models\Book;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -19,7 +20,7 @@ class BookController extends Controller
         if(is_null($books)){
             return response()->json(['message'=>"Data not found",'status_code'=>404],404);
         }
-        return response()->json($books);
+        return new BookCollection($books);
     }
 
     /**
@@ -66,7 +67,7 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        return response()->json($book);
+        return new BookCollection($book);
     }
 
     /**
