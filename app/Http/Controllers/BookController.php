@@ -42,7 +42,7 @@ class BookController extends Controller
     public function store(Request $request)
     {
         $validation=Validator::make($request->all(),[
-            'title'=>'required|string|max:100|unique',
+            'title'=>'required|string|max:100|unique:books',
             'author'=>'required|string|max:100',
             'isbn'=>'required|string|max:20',
             'is_available'=>'required|boolean'
@@ -91,7 +91,7 @@ class BookController extends Controller
     public function update(Request $request, Book $book)
     {
         $validation=Validator::make($request->all(),[
-            'title'=>'required|string|max:100|unique',
+            'title'=>'required|string|max:100|unique:books',
             'author'=>'required|string|max:100',
             'isbn'=>'required|string|max:20',
             'is_available'=>'required|boolean'

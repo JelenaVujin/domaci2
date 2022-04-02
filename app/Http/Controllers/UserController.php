@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\UserCollection;
 use App\Models\user;
 use Illuminate\Http\Request;
 
@@ -18,7 +19,7 @@ class UserController extends Controller
         if(is_null($users)){
             return response()->json(['message'=>"Data not found",'status_code'=>404],404);
         }
-        return response()->json($users);
+        return new UserCollection($users);
     }
 
     /**
@@ -50,7 +51,7 @@ class UserController extends Controller
      */
     public function show(user $user)
     {
-        return response()->json($user);
+        return new UserCollection($user);
     }
 
     /**

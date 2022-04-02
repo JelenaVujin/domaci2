@@ -11,7 +11,7 @@ class Reservation extends Model
     protected $fillable=['user_id','id','book_id','member_id'];
     public function book()
     {
-        return $this->belongsTo(Reservation::class);
+        return $this->belongsTo(Book::class);
     }
     public function user()
     {

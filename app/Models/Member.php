@@ -9,7 +9,7 @@ class Member extends Model
 {
     use HasFactory;
     protected $fillable=['id','member_name','phone_number','email','book_issued'];
-    public function reservations()
+    public function reservation()
     {
         return $this->hasMany(Reservation::class);
     }

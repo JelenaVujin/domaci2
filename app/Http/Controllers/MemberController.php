@@ -43,8 +43,8 @@ class MemberController extends Controller
     {
         $validation=Validator::make($request->all(),[
             'member_name'=>'required|max:100|string',
-            'phone_number'=>'required|max:30|unique|numeric|phone_number',
-            'email'=>'required|email|unique',
+            'phone_number'=>'required|min:10|regex:/^([0-9\s\-\+\(\)]*)$/|unique:members|numeric',
+            'email'=>'required|email|unique:members',
             'book_issued'=>'boolean'
         ]);
         if($validation->fails()){
@@ -92,8 +92,8 @@ class MemberController extends Controller
     {
         $validation=Validator::make($request->all(),[
             'member_name'=>'required|max:100|string',
-            'phone_number'=>'required|max:30|unique|numeric|phone_number',
-            'email'=>'required|email|unique',
+            'phone_number'=>'required|min:10|unique:members|numeric|regex:/^([0-9\s\-\+\(\)]*)$/',
+            'email'=>'required|email|unique:members',
             'book_issued'=>'boolean'
         ]);
         if($validation->fails()){

@@ -19,7 +19,7 @@ class MemberResource extends JsonResource
             'member_name'=>$this->resource->member_name,
             'phone_number'=>$this->resource->phone_number,
             'email'=>$this->resource->email,
-            'book_issued'=>$this->resource->book_resource
+            'book_issued'=>$this->resource->book_issued
         ];
     }
 }

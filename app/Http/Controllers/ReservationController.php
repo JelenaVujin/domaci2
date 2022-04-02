@@ -24,9 +24,9 @@ class ReservationController extends Controller
     public function store(Request $request)
     {
         $validation=Validator::make($request->all(),[
-            'user_id'=>'required|max:10|unique',
-            'book_id'=>'required|max:10|unique',
-            'member_id'=>'required|max:10|unique'
+            'user_id'=>'required|max:10',
+            'book_id'=>'required|max:10',
+            'member_id'=>'required|max:10'
         ]);
         if($validation->fails()){
             return response()->json($validation->errors());
@@ -41,9 +41,9 @@ class ReservationController extends Controller
     public function update(Request $request, Reservation $reservation)
     {
         $validation=Validator::make($request->all(),[
-            'user_id'=>'required|max:10|unique',
-            'book_id'=>'required|max:10|unique',
-            'member_id'=>'required|max:10|unique'
+            'user_id'=>'required|max:10',
+            'book_id'=>'required|max:10',
+            'member_id'=>'required|max:10'
         ]);
         if($validation->fails()){
             return response()->json($validation->errors());
