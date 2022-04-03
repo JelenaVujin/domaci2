@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
@@ -16,8 +16,8 @@ class AuthController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:100',
             'email' => 'required|string|unique:users|email',
-            'password' => 'required|string|min:8|regex:/[a-z]|regex:/[A-Z]/|regex:/[0-9]/|regex:/[@$!%*#?&]/'
-            //pass mora da sadrzi bar jedno malo slovo, jedno veliko slovo, broj i specijalni znak
+            'password' => 'required|string|regex:"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"'
+            //pass mora da sadrzi bar jedno malo slovo, jedno veliko slovo, broj i specijalni znak!!!
         ]);
 
         if ($validator->fails()){
@@ -41,7 +41,14 @@ class AuthController extends Controller
         $user = User::where('name', $request->name)->first();
         $token = $user->createToken('auth_token')->plainTextToken;
 
-        return response()->json(['message' => 'Login successful! ' . $user->name, 'auth_token' => $token], 200);
+        return response()->json(['message' => 'Login successful! ' . $user->name, 'auth_token' => $token,'token_type'=>'Bearer'], 200);
         
+    }
+    public function logout(Request $request)
+    {
+        
+        Session::flush(); 
+        
+        return response()->json(['message'=>'User successfully signed out!'],200);
     }
 }
